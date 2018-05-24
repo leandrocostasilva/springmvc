@@ -24,3 +24,5 @@ hs_err_pid*
 casadocodigo/target
 casadocodigo/.settings
 Servers/
+RemoteSystemsTempFiles/
+*.DS_Store
