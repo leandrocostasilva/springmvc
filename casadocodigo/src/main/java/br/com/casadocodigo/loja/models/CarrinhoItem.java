@@ -89,4 +89,18 @@ public class CarrinhoItem {
 		return true;
 	}
 
+	/**
+	 * @return the tipoPreco
+	 */
+	public final TipoPreco getTipoPreco() {
+		return tipoPreco;
+	}
+
+	/**
+	 * @param tipoPreco the tipoPreco to set
+	 */
+	public final void setTipoPreco(TipoPreco tipoPreco) {
+		this.tipoPreco = tipoPreco;
+	}
+
 }
