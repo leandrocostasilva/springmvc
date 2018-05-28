@@ -10,46 +10,51 @@ import java.math.BigDecimal;
  *
  */
 public class CarrinhoItem {
-	
-    private TipoPreco tipoPreco;
-    private Produto produto;
-    
-    public CarrinhoItem(Produto produto, TipoPreco tipoPreco) {
-        this.produto = produto;
-        this.tipoPreco = tipoPreco;
-    }
-    
+
+	private TipoPreco tipoPreco;
+	private Produto produto;
+
+	public CarrinhoItem(Produto produto, TipoPreco tipoPreco) {
+		this.produto = produto;
+		this.tipoPreco = tipoPreco;
+	}
+
 	/**
 	 * @return the produto
 	 */
 	public final Produto getProduto() {
 		return produto;
 	}
+
 	/**
-	 * @param produto the produto to set
+	 * @param produto
+	 *            the produto to set
 	 */
 	public final void setProduto(Produto produto) {
 		this.produto = produto;
 	}
-	
-	public BigDecimal getPreco(){
-	    return produto.precoPara(tipoPreco);
+
+	public BigDecimal getPreco() {
+		return produto.precoPara(tipoPreco);
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()h
 	 */
 	@Override
 	public String toString() {
 		return String.format("CarrinhoItem [tipoPreco=%s, produto=%s]", tipoPreco, produto);
 	}
-	
-	public BigDecimal getTotal(int quantidade) {
-	    return this.getPreco().multiply(new BigDecimal(quantidade));
-	}
-	
 
-	/* (non-Javadoc)
+	public BigDecimal getTotal(int quantidade) {
+		return this.getPreco().multiply(new BigDecimal(quantidade));
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -61,7 +66,9 @@ public class CarrinhoItem {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
@@ -97,7 +104,8 @@ public class CarrinhoItem {
 	}
 
 	/**
-	 * @param tipoPreco the tipoPreco to set
+	 * @param tipoPreco
+	 *            the tipoPreco to set
 	 */
 	public final void setTipoPreco(TipoPreco tipoPreco) {
 		this.tipoPreco = tipoPreco;

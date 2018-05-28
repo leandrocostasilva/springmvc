@@ -14,30 +14,30 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableTransactionManagement
 public class JPAConfiguration {
-	
+
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
-		
+
 		LocalContainerEntityManagerFactoryBean factoryBean = new LocalContainerEntityManagerFactoryBean();
-		
+
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		factoryBean.setJpaVendorAdapter(vendorAdapter);
-		
+
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setUsername("root");
 		dataSource.setPassword("");
 		dataSource.setUrl("jdbc:hsqldb:file:~/Desenvolvimento/basedados/casadocodigo");
-        dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
+		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
 		factoryBean.setDataSource(dataSource);
-		
+
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
 		properties.setProperty("hsqldb.show_sql", "true");
 		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
-		
+
 		factoryBean.setJpaProperties(properties);
 		factoryBean.setPackagesToScan("br.com.casadocodigo.loja.models");
-		
+
 		return factoryBean;
 	}
 
@@ -45,6 +45,5 @@ public class JPAConfiguration {
 	public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
 		return new JpaTransactionManager(emf);
 	}
-	
-	
+
 }

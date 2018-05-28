@@ -18,23 +18,23 @@ import org.springframework.web.multipart.MultipartFile;
  */
 @Component
 public class FileSaver {
-	
-    @Autowired
-    private HttpServletRequest request;
-	
-    public String write(String baseFolder, MultipartFile file){
-    	
-        try {
-        	
-            String realPath = request.getServletContext().getRealPath("/"+baseFolder);
-            String path = realPath + "/" + file.getOriginalFilename();
-            file.transferTo(new File(path));
-            return baseFolder + "/" + file.getOriginalFilename();
 
-        } catch (IllegalStateException | IOException e) {
-            throw new RuntimeException(e);
-        }
+	@Autowired
+	private HttpServletRequest request;
 
-    }
+	public String write(String baseFolder, MultipartFile file) {
+
+		try {
+
+			String realPath = request.getServletContext().getRealPath("/" + baseFolder);
+			String path = realPath + "/" + file.getOriginalFilename();
+			file.transferTo(new File(path));
+			return baseFolder + "/" + file.getOriginalFilename();
+
+		} catch (IllegalStateException | IOException e) {
+			throw new RuntimeException(e);
+		}
+
+	}
 
 }

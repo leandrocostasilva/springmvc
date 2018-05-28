@@ -42,11 +42,11 @@ public class PagamentoController {
 			model.addFlashAttribute("sucesso", response);
 			System.out.println(response);
 
-			return new ModelAndView("redirect:/produtos");
+			return (Callable<ModelAndView>) new ModelAndView("redirect:/produtos");
 		} catch (HttpClientErrorException e) {
 			e.printStackTrace();
 			model.addFlashAttribute("falha", "Valor maior que o permitido");
-			return new ModelAndView("redirect:/produtos");
+			return (Callable<ModelAndView>) new ModelAndView("redirect:/produtos");
 		}
 	}
 
