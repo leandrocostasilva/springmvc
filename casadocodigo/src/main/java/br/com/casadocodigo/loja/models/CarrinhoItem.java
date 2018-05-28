@@ -3,6 +3,8 @@
  */
 package br.com.casadocodigo.loja.models;
 
+import java.math.BigDecimal;
+
 /**
  * @author leandro
  *
@@ -29,6 +31,11 @@ public class CarrinhoItem {
 	public final void setProduto(Produto produto) {
 		this.produto = produto;
 	}
+	
+	public BigDecimal getPreco(){
+	    return produto.precoPara(tipoPreco);
+	}
+	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()h
 	 */
@@ -36,6 +43,11 @@ public class CarrinhoItem {
 	public String toString() {
 		return String.format("CarrinhoItem [tipoPreco=%s, produto=%s]", tipoPreco, produto);
 	}
+	
+	public BigDecimal getTotal(int quantidade) {
+	    return this.getPreco().multiply(new BigDecimal(quantidade));
+	}
+	
 
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
