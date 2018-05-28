@@ -26,7 +26,7 @@ public class JPAConfiguration {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
 		dataSource.setUsername("root");
 		dataSource.setPassword("");
-		dataSource.setUrl("jdbc:hsqldb:file:casadocodigo");
+		dataSource.setUrl("jdbc:hsqldb:file:~/Desenvolvimento/basedados/casadocodigo");
         dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
 		factoryBean.setDataSource(dataSource);
 		
