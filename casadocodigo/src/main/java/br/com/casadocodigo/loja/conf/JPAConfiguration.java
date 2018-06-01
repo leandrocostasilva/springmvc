@@ -32,7 +32,7 @@ public class JPAConfiguration {
 
 		Properties properties = new Properties();
 		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
-		properties.setProperty("hsqldb.show_sql", "true");
+		properties.setProperty("hibernate.show_sql", "true");
 		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
 
 		factoryBean.setJpaProperties(properties);

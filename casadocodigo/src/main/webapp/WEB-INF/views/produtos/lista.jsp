@@ -12,10 +12,7 @@
 <body>
     <h1>Lista de Produtos</h1>
     <p> ${sucesso} </p>
-<<<<<<< HEAD
     <p> ${falha} </p>
-=======
->>>>>>> 817e11da38c75041ec3c7ceb183fdbd52427105e
 	<table>
 		<tr>
 			<td>Título</td>

@@ -14,10 +14,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Produto {
-	
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String titulo;
 	private String descricao;
 	private int paginas;
@@ -27,7 +28,7 @@ public class Produto {
 
 	@DateTimeFormat
 	private Calendar dataLancamento;
-	
+
 	private String sumarioPath;
 
 	/**
@@ -38,7 +39,8 @@ public class Produto {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public final void setId(int id) {
 		this.id = id;
@@ -52,7 +54,8 @@ public class Produto {
 	}
 
 	/**
-	 * @param descricao the descricao to set
+	 * @param descricao
+	 *            the descricao to set
 	 */
 	public final void setDescricao(String descricao) {
 		this.descricao = descricao;
@@ -66,7 +69,8 @@ public class Produto {
 	}
 
 	/**
-	 * @param paginas the paginas to set
+	 * @param paginas
+	 *            the paginas to set
 	 */
 	public final void setPaginas(int paginas) {
 		this.paginas = paginas;
@@ -80,7 +84,8 @@ public class Produto {
 	}
 
 	/**
-	 * @param precos the precos to set
+	 * @param precos
+	 *            the precos to set
 	 */
 	public final void setPrecos(List<Preco> precos) {
 		this.precos = precos;
@@ -94,7 +99,8 @@ public class Produto {
 	}
 
 	/**
-	 * @param dataLancamento the dataLancamento to set
+	 * @param dataLancamento
+	 *            the dataLancamento to set
 	 */
 	public final void setDataLancamento(Calendar dataLancamento) {
 		this.dataLancamento = dataLancamento;
@@ -108,7 +114,8 @@ public class Produto {
 	}
 
 	/**
-	 * @param sumarioPath the sumarioPath to set
+	 * @param sumarioPath
+	 *            the sumarioPath to set
 	 */
 	public final void setSumarioPath(String sumarioPath) {
 		this.sumarioPath = sumarioPath;
@@ -122,17 +129,20 @@ public class Produto {
 	}
 
 	/**
-	 * @param titulo the titulo to set
+	 * @param titulo
+	 *            the titulo to set
 	 */
 	public final void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	
+
 	public BigDecimal precoPara(TipoPreco tipoPreco) {
-	    return precos.stream().filter(preco -> preco.getTipo().equals(tipoPreco)).findFirst().get().getValor();        
+		return precos.stream().filter(preco -> preco.getTipo().equals(tipoPreco)).findFirst().get().getValor();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -142,7 +152,9 @@ public class Produto {
 				id, titulo, descricao, paginas, precos, dataLancamento, sumarioPath);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -153,7 +165,9 @@ public class Produto {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override
