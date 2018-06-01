@@ -3,6 +3,7 @@ package br.com.casadocodigo.loja.conf;
 import java.util.Properties;
 
 import javax.persistence.EntityManagerFactory;
+import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -23,15 +24,17 @@ public class JPAConfiguration {
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		factoryBean.setJpaVendorAdapter(vendorAdapter);
 
-		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setUsername("root");
-		dataSource.setPassword("");
-		dataSource.setUrl("jdbc:hsqldb:file:~/Desenvolvimento/basedados/casadocodigo");
-		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
-		factoryBean.setDataSource(dataSource);
+//		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+//		dataSource.setUsername("root");
+//		dataSource.setPassword("");
+//		dataSource.setUrl("jdbc:hsqldb:file:~/Desenvolvimento/basedados/casadocodigo");
+//		dataSource.setDriverClassName("org.hsqldb.jdbcDriver");
+//		factoryBean.setDataSource(dataSource);
+		factoryBean.setDataSource(dataSource());
 
 		Properties properties = new Properties();
-		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
+//		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.HSQLDialect");
+		properties.setProperty("hibernate.dialect", "org.hibernate.dialect.Oracle10gDialect");
 		properties.setProperty("hibernate.show_sql", "true");
 		properties.setProperty("hibernate.hbm2ddl.auto", "create-drop");
 
@@ -45,5 +48,16 @@ public class JPAConfiguration {
 	public JpaTransactionManager transactionManager(EntityManagerFactory emf) {
 		return new JpaTransactionManager(emf);
 	}
+	
+    @Bean
+    public DataSource dataSource(){
+
+    	DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setUsername("casadocodigo");
+        dataSource.setPassword("casadocodigo");
+        dataSource.setUrl("jdbc:oracle:thin:@//localhost:1521/casadocodigo");
+        dataSource.setDriverClassName("oracle.jdbc.OracleDriver");
+        return dataSource;
+    }
 
 }
